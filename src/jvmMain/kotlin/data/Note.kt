@@ -1,4 +1,7 @@
-import Note.*
+package data
+
+import data.Note.*
+import kotlinx.coroutines.flow.flow
 
 data class Note(val title: String, val description: String, val type: Type) {
     enum class Type {
@@ -6,8 +9,7 @@ data class Note(val title: String, val description: String, val type: Type) {
     }
 }
 
-fun getNotes(callback: (List<Note>) -> Unit) {
-    Thread.sleep(2000)
+suspend fun getNotes() = flow {
     val notes = (1..10).map {
         Note(
             title = "Title $it",
@@ -15,5 +17,5 @@ fun getNotes(callback: (List<Note>) -> Unit) {
             if (it % 3 == 0) Type.AUDIO else Type.TEXT
         )
     }
-    callback(notes)
+    emit(notes)
 }
