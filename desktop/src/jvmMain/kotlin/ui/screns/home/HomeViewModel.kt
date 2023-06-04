@@ -6,9 +6,6 @@ import androidx.compose.runtime.setValue
 import data.Filter
 import data.Note
 import data.remote.NotesRepository
-import data.remote.notesClient
-import io.ktor.client.call.*
-import io.ktor.client.request.*
 import kotlinx.coroutines.CoroutineScope
 import kotlinx.coroutines.launch
 
